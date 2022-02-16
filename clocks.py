@@ -13,3 +13,6 @@ class CesiumClock:
     def addTime(self, actualTimePassed, driftTimePassed):
         self.actualTime = self.actualTime + actualTimePassed
         self.driftTime = self.driftTime + driftTimePassed
+
+class Test:
+    
