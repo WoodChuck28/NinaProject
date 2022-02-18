@@ -5,8 +5,8 @@ class SpaceShip:
         self.actualTime = actualTime
         self.driftTime = driftTime
 
-    def getTimeToTarget(self, distance):
-        timeToTarget = distance / self.speed
+    def getTimeToCorrect(self, distance, light):
+        timeToTarget = distance / light
         return timeToTarget
 
     def add_dist(self, newDistance):
@@ -17,5 +17,13 @@ class SpaceShip:
 
     def getSpeed(self):
         return self.speed
+
+    def getNewPosition(self, timePassed):
+        distanceCovered = self.speed * timePassed
+        return distanceCovered
+
+    def getDistanceWhileWaiting(self, timeToCorrect):
+        distanceWithoutCorrection = self.speed * timeToCorrect
+        return distanceWithoutCorrection
 
     

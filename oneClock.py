@@ -1,7 +1,11 @@
-from clocks import CesiumClock
-from spaceShip import SpaceShip
 from planets import Planet
 from distances import *
+from planetaryJourney import ship_journey
+from spaceShip import SpaceShip
+import pandas as pd 
+import csv
+
+light = 300000000
 
 #creating empty lists to be filled in with our code
 actualTimes = []
@@ -13,22 +17,29 @@ driftDistances= []
 planets = []
 
 #define planets, distances, and their order from earth
-mars = Planet("Mars", 345000000, 1)
-jupiter = Planet("Jupiter", 654000000, 2)
-neptune = Planet("Neptune", 999000000, 3)
+mars = Planet("Mars", .5, 1)
+jupiter = Planet("Jupiter", 4.2, 2)
+saturn = Planet("Saturn", 8.6, 3)
+uranus = Planet("Uranus", 18.2, 4)
+neptune = Planet("Neptune", 29.0, 5)
+pluto = Planet("Pluto", 38.5, 6)
 
-#add planets to planets array
 planets.append(mars)
 planets.append(jupiter)
+planets.append(saturn)
+planets.append(uranus)
 planets.append(neptune)
+planets.append(pluto)
 
-#create spaceship
-myShip = SpaceShip(340000)
+planet_distances_m = []
 
 for entry in planets:
-    distance = entry[1]
-    time  = myShip.getTimeToTarget(distance)
-    actualTimes.append(time)
+    meters = convertAU(entry.distance)
+    planet_distances_m.append(meters)
 
-print(actualTimes)
+master_array = ship_journey(planet_distances_m[1], light)
+
+dataframe = pd.DataFrame(master_array)
+dataframe.to_csv(r"C:/Users/17703/Sandbox/PythonProjects/NinaProject/data.csv")
+
 
