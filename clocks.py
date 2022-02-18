@@ -14,5 +14,4 @@ class CesiumClock:
         self.actualTime = self.actualTime + actualTimePassed
         self.driftTime = self.driftTime + driftTimePassed
 
-class Test:
     
