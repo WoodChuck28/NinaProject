@@ -5,7 +5,7 @@ from spaceShip import SpaceShip
 #The goal is to model a spaceship flying through space, and updating
 #values every so often to demonstrate the effect we are looking for.
 #It will take a distance and calculate things based on that entered distance
-def ship_journey( destination_distance, light):
+def ship_journey_twoWay( destination_distance, light):
     #creating a spaceship with a speed of 350000 m/s
     myShip = SpaceShip(350000)
     #creating empty master array which will ultimately house all of our data
