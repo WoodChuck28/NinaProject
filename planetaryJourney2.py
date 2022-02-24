@@ -29,7 +29,7 @@ def ship_journey( destination_distance, light):
         myShip.add_dist(ship_pos)
         ship_positions.append(ship_pos)
         time_values.append(time)
-        correctionTime = myShip.getTimeToCorrectOneWay(ship_pos, light)
+        correctionTime = myShip.getTimeToCorrectTwoWay(ship_pos, light)
         time_to_correct.append(correctionTime)
         distanceWithoutCorrection = myShip.getDistanceWhileWaiting(correctionTime)
         distancesWithoutCorrection.append(distanceWithoutCorrection)
