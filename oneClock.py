@@ -35,12 +35,12 @@ for entry in planets:
 
 #As of this second, this is the BIG function which returns 4 chunks of data. See planetaryjourney.py
 #to see what this is doing
-master_array = ship_journey(planet_distances_m[1], light)
+master_array = ship_journey(planet_distances_m[3], light)
 
 #Think of this as creating a huge matrix of all of the data so it is easy to export
 dataframe = pd.DataFrame(master_array)
 
 #this is simple but awesome, it takes our huge matrix and exports it to a csv datafile.
-dataframe.to_csv(r"C:/Users/17703/Sandbox/PythonProjects/NinaProject/"+"OneWay"+"data.csv")
+dataframe.to_csv(r"C:/Users/17703/Sandbox/PythonProjects/NinaProject/"+planets[3].name+"OneWay"+"data.csv")
 
 
