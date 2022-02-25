@@ -1,6 +1,6 @@
 from planets import Planet
 from distances import *
-from planetaryJourney2 import ship_journey_twoWay
+from planetaryJourney3 import ship_journey_threeWay
 from spaceShip import SpaceShip
 import pandas as pd 
 
@@ -35,14 +35,12 @@ for entry in planets:
 
 #As of this second, this is the BIG function which returns 4 chunks of data. See planetaryjourney.py
 #to see what this is doing
-master_array = ship_journey_twoWay(planet_distances_m[3], light)
+master_array = ship_journey_threeWay(planet_distances_m[3], light)
 
 #Think of this as creating a huge matrix of all of the data so it is easy to export
 dataframe = pd.DataFrame(master_array)
 
-planetName = planets[3].name
-
 #this is simple but awesome, it takes our huge matrix and exports it to a csv datafile.
-dataframe.to_csv(r"C:/Users/17703/Sandbox/PythonProjects/NinaProject/"+planetName+"TwoWay"+"data.csv")
+dataframe.to_csv(r"C:/Users/17703/Sandbox/PythonProjects/NinaProject/"+planets[3].name+"ThreeWay"+"data.csv")
 
 
