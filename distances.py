@@ -6,7 +6,6 @@ def calculateDelay(distance, lightSpeed):
     delayTime = distance / lightSpeed
     return delayTime
 
-
 def convertAU(auRating):
     kiloDistance = auRating * 150000000000
     return kiloDistance
