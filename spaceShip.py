@@ -1,3 +1,4 @@
+from numpy import double
 class SpaceShip:
     def __init__(self, speed, posX=0, actualTime=0, driftTime=0):
         self.speed = speed
@@ -5,7 +6,16 @@ class SpaceShip:
         self.actualTime = actualTime
         self.driftTime = driftTime
 
-    def getTimeToCorrect(self, distance, light):
+    def getTimeToCorrectTwoWay(self, distance, light):
+        timeToTarget = distance / light
+        doubleDistance = timeToTarget * 2
+        return doubleDistance
+    
+    def getTimeToCorrectOneWay(self, distance, light):
+        timeToTarget = distance / light
+        return timeToTarget
+
+    def getTimeToCorrectThreeWay(self, distance, light):
         timeToTarget = distance / light
         return timeToTarget
 

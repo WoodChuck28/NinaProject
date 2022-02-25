@@ -1,11 +1,12 @@
 from distances import *
+from threeClockFunctions import *
 from spaceShip import SpaceShip
 
 #Current master function responsible for bulk of the work. 
 #The goal is to model a spaceship flying through space, and updating
 #values every so often to demonstrate the effect we are looking for.
 #It will take a distance and calculate things based on that entered distance
-def ship_journey( destination_distance, light):
+def ship_journey_threeWay( destination_distance, light):
     #creating a spaceship with a speed of 350000 m/s
     myShip = SpaceShip(350000)
     #creating empty master array which will ultimately house all of our data
@@ -29,7 +30,12 @@ def ship_journey( destination_distance, light):
         myShip.add_dist(ship_pos)
         ship_positions.append(ship_pos)
         time_values.append(time)
-        correctionTime = myShip.getTimeToCorrectOneWay(ship_pos, light)
+
+        halfwayPoint = destination_distance / 2
+        if ship_pos <= halfwayPoint:
+            correctionTime = myShip.getTimeToCorrectThreeWay(destination_distance, light)
+        else:
+            correctionTime = planetTimeToTarget(destination_distance, ship_pos, light)
         time_to_correct.append(correctionTime)
         distanceWithoutCorrection = myShip.getDistanceWhileWaiting(correctionTime)
         distancesWithoutCorrection.append(distanceWithoutCorrection)

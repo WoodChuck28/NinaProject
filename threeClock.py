@@ -1,10 +1,10 @@
 from planets import Planet
 from distances import *
-from planetaryJourney import ship_journey
+from planetaryJourney3 import ship_journey_threeWay
 from spaceShip import SpaceShip
 import pandas as pd 
 
-def runOneClockModel():
+def runThreeClockModel():
     light = 300000000
 
     #creating empty planets list
@@ -33,13 +33,18 @@ def runOneClockModel():
     for entry in planets:
         meters = convertAU(entry.distance)
         planet_distances_m.append(meters)
-
+        
     for i in range(5):
-        master_array = ship_journey(planet_distances_m[i], light)
+        master_array = ship_journey_threeWay(planet_distances_m[i], light)
         #Think of this as creating a huge matrix of all of the data so it is easy to export
         dataframe = pd.DataFrame(master_array)
 
         #this is simple but awesome, it takes our huge matrix and exports it to a csv datafile.
-        dataframe.to_csv(r"C:/Users/17703/Sandbox/PythonProjects/NinaProject/PlanetData/"+planets[i].name+"OneWay"+"data.csv")
+        dataframe.to_csv(r"C:/Users/17703/Sandbox/PythonProjects/NinaProject/PlanetData/"+planets[i].name+"ThreeWay"+"data.csv")
+
+
+
+
+
 
 
