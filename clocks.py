@@ -3,6 +3,7 @@ class CesiumClock:
         self.driftValue = driftValue
         self.actualTime = actualTime
         self.driftTime = driftTime
+        print('Cesium clock initiated.')
 
     def editDriftTime(self, currentTime):
         self.actualTime = self.actualTime + currentTime
