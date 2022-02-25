@@ -32,15 +32,18 @@ planet_distances_m = []
 for entry in planets:
     meters = convertAU(entry.distance)
     planet_distances_m.append(meters)
+    
+for i in range(5):
+    master_array = ship_journey_threeWay(planet_distances_m[i], light)
+    #Think of this as creating a huge matrix of all of the data so it is easy to export
+    dataframe = pd.DataFrame(master_array)
 
-#As of this second, this is the BIG function which returns 4 chunks of data. See planetaryjourney.py
-#to see what this is doing
-master_array = ship_journey_threeWay(planet_distances_m[3], light)
+    #this is simple but awesome, it takes our huge matrix and exports it to a csv datafile.
+    dataframe.to_csv(r"C:/Users/17703/Sandbox/PythonProjects/NinaProject/PlanetData/"+planets[i].name+"ThreeWay"+"data.csv")
 
-#Think of this as creating a huge matrix of all of the data so it is easy to export
-dataframe = pd.DataFrame(master_array)
 
-#this is simple but awesome, it takes our huge matrix and exports it to a csv datafile.
-dataframe.to_csv(r"C:/Users/17703/Sandbox/PythonProjects/NinaProject/"+planets[3].name+"ThreeWay"+"data.csv")
+
+
+
 
 
