@@ -1,5 +1,6 @@
 from distances import *
 from threeClockFunctions import *
+from driftTime import *
 from spaceShip import SpaceShip
 
 #Current master function responsible for bulk of the work. 
@@ -15,12 +16,18 @@ def ship_journey_threeWay( destination_distance, light):
     ship_positions = []
     #time ticks
     time_values = []
+    #drift time values
+    #drift_time_values1 = []
+    #drift_time_values2 = []
+    #drift_time_values3 = []
     #array for how long the time to correct will take, should start small
     time_to_correct = []
     #array to demonstrate how far our ship will go while waiting for instructions
     distancesWithoutCorrection = []
     #starting time
     time = 1
+    #driftValues here
+    #driftTimeValue1 = .000001
     #calculating roughly how long our trip SHOULD take
     time_to_destination = destination_distance / myShip.speed
 
@@ -30,13 +37,17 @@ def ship_journey_threeWay( destination_distance, light):
         myShip.add_dist(ship_pos)
         ship_positions.append(ship_pos)
         time_values.append(time)
+        
 
         halfwayPoint = destination_distance / 2
         if ship_pos <= halfwayPoint:
             correctionTime = myShip.getTimeToCorrectThreeWay(destination_distance, light)
+            #driftTime = calculateDriftTime(correctionTime, driftTimeValue1)
         else:
             correctionTime = planetTimeToTarget(destination_distance, ship_pos, light)
+            #driftTime = calculateDriftTime(correctionTime, driftTimeValue1)
         time_to_correct.append(correctionTime)
+
         distanceWithoutCorrection = myShip.getDistanceWhileWaiting(correctionTime)
         distancesWithoutCorrection.append(distanceWithoutCorrection)
         time = time + 86400
@@ -44,6 +55,7 @@ def ship_journey_threeWay( destination_distance, light):
     #add all of our mini arrays to the one BIG array
     master_array.append(ship_positions)
     master_array.append(time_values)
+    #master_array.append(drift_time_values1)
     master_array.append(time_to_correct)
     master_array.append(distancesWithoutCorrection)
 

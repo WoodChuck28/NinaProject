@@ -36,11 +36,12 @@ def ship_journey( destination_distance, light):
         myShip.add_dist(ship_pos)
         ship_positions.append(ship_pos)
         time_values.append(time)
+        
+        correctionTime = myShip.getTimeToCorrectOneWay(ship_pos, light)
         driftTime = calculateDriftTime(time, driftTimeValue1)
         drift_time_values1.append(driftTime[0])
         drift_time_values2.append(driftTime[1])
         drift_time_values3.append(driftTime[2])
-        correctionTime = myShip.getTimeToCorrectOneWay(ship_pos, light)
         time_to_correct.append(correctionTime)
         distanceWithoutCorrection = myShip.getDistanceWhileWaiting(correctionTime)
         distancesWithoutCorrection.append(distanceWithoutCorrection)

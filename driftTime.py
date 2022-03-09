@@ -1,8 +1,12 @@
-def calculateDriftTime(time, driftValue1, driftValue2=0, driftValue3=0):
+def calculateDriftTime(time, driftValueOne, driftValueTwo=0, driftValueThree=0):
     timeArray = []
-    newtime1 = (driftValue1+1) * time
-    newtime2 = (driftValue2+1) * time
-    newtime3 = (driftValue3+1) * time
+    driftValue1 = driftValueOne + 1.0
+    driftValue2 = driftValueTwo + 1.0
+    driftValue3 = driftValueThree + 1.0
+
+    newtime1 = driftValue1 * time
+    newtime2 = driftValue2 * time
+    newtime3 = driftValue3 * time
 
     timeArray.append(newtime1)
     timeArray.append(newtime2)
