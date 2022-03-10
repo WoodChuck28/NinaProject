@@ -38,10 +38,8 @@ def ship_journey( destination_distance, light):
         time_values.append(time)
         
         correctionTime = myShip.getTimeToCorrectOneWay(ship_pos, light)
-        driftTime = calculateDriftTime(time, driftTimeValue1)
-        drift_time_values1.append(driftTime[0])
-        drift_time_values2.append(driftTime[1])
-        drift_time_values3.append(driftTime[2])
+        driftTime = calculateDriftTime(correctionTime, driftTimeValue1)
+        drift_time_values1.append(driftTime)
         time_to_correct.append(correctionTime)
         distanceWithoutCorrection = myShip.getDistanceWhileWaiting(correctionTime)
         distancesWithoutCorrection.append(distanceWithoutCorrection)
@@ -50,8 +48,8 @@ def ship_journey( destination_distance, light):
     #add all of our mini arrays to the one BIG array
     master_array.append(ship_positions)
     master_array.append(time_values)
-    master_array.append(drift_time_values1)
     master_array.append(time_to_correct)
+    master_array.append(drift_time_values1)
     master_array.append(distancesWithoutCorrection)
 
 

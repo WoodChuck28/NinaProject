@@ -17,9 +17,8 @@ def ship_journey_threeWay( destination_distance, light):
     #time ticks
     time_values = []
     #drift time values
-    #drift_time_values1 = []
-    #drift_time_values2 = []
-    #drift_time_values3 = []
+    drift_time_values1 = []
+    
     #array for how long the time to correct will take, should start small
     time_to_correct = []
     #array to demonstrate how far our ship will go while waiting for instructions
@@ -27,7 +26,7 @@ def ship_journey_threeWay( destination_distance, light):
     #starting time
     time = 1
     #driftValues here
-    #driftTimeValue1 = .000001
+    driftTimeValue1 = .000001
     #calculating roughly how long our trip SHOULD take
     time_to_destination = destination_distance / myShip.speed
 
@@ -42,11 +41,12 @@ def ship_journey_threeWay( destination_distance, light):
         halfwayPoint = destination_distance / 2
         if ship_pos <= halfwayPoint:
             correctionTime = myShip.getTimeToCorrectThreeWay(destination_distance, light)
-            #driftTime = calculateDriftTime(correctionTime, driftTimeValue1)
+            driftTime = calculateDriftTime(correctionTime, driftTimeValue1)
         else:
             correctionTime = planetTimeToTarget(destination_distance, ship_pos, light)
-            #driftTime = calculateDriftTime(correctionTime, driftTimeValue1)
+            driftTime = calculateDriftTime(correctionTime, driftTimeValue1)
         time_to_correct.append(correctionTime)
+        drift_time_values1.append(driftTime)
 
         distanceWithoutCorrection = myShip.getDistanceWhileWaiting(correctionTime)
         distancesWithoutCorrection.append(distanceWithoutCorrection)
@@ -55,8 +55,8 @@ def ship_journey_threeWay( destination_distance, light):
     #add all of our mini arrays to the one BIG array
     master_array.append(ship_positions)
     master_array.append(time_values)
-    #master_array.append(drift_time_values1)
     master_array.append(time_to_correct)
+    master_array.append(drift_time_values1)
     master_array.append(distancesWithoutCorrection)
 
     #return our master array so it can be exported in main code file.
