@@ -17,12 +17,11 @@ def ship_journey( destination_distance, light):
     time_values = []
     #drift time values
     drift_time_values1 = []
-    drift_time_values2 = []
-    drift_time_values3 = []
     #array for how long the time to correct will take, should start small
     time_to_correct = []
     #array to demonstrate how far our ship will go while waiting for instructions
     distancesWithoutCorrection = []
+    distancesWithoutCorrection2 = []
     #starting time
     time = 1
     #driftValues here
@@ -42,7 +41,9 @@ def ship_journey( destination_distance, light):
         drift_time_values1.append(driftTime)
         time_to_correct.append(correctionTime)
         distanceWithoutCorrection = myShip.getDistanceWhileWaiting(correctionTime)
+        distanceWithoutCorrection2 = myShip.getDistanceWhileWaiting(driftTime)
         distancesWithoutCorrection.append(distanceWithoutCorrection)
+        distancesWithoutCorrection2.append(distanceWithoutCorrection2)
         time = time + 86400
 
     #add all of our mini arrays to the one BIG array
@@ -51,6 +52,7 @@ def ship_journey( destination_distance, light):
     master_array.append(time_to_correct)
     master_array.append(drift_time_values1)
     master_array.append(distancesWithoutCorrection)
+    master_array.append(distancesWithoutCorrection2)
 
 
     #return our master array so it can be exported in main code file.
