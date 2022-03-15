@@ -15,8 +15,8 @@ class SpaceShip:
         timeToTarget = distance / light
         return timeToTarget
 
-    def getTimeToCorrectThreeWay(self, distance, light):
-        timeToTarget = distance / light
+    def getTimeToCorrectThreeWay(self, light):
+        timeToTarget = self.posX / light
         return timeToTarget
 
     def add_dist(self, newDistance):
