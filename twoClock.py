@@ -8,7 +8,8 @@ def runTwoClockModel():
 
     #creating empty planets list
     
-    for i in range(5):
+    for i in range(len(planets)):
+        print(f'Calculating {planets[i]} two way data')
         df = ship_journey_twoWay(planet_distances_m[i], light)
         # Think of this as creating a huge matrix of all of the data so it is easy to export=
 

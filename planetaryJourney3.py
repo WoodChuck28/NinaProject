@@ -30,7 +30,7 @@ def ship_journey_threeWay( destination_distance, light) -> pd.DataFrame:
     #starting time
     time = 1
     #driftValues here
-    driftTimeValue1 = .000001
+    driftTimeValue1 = .00000000000000001
     #calculating roughly how long our trip SHOULD take
     time_to_destination = destination_distance / myShip.speed
 
@@ -77,7 +77,7 @@ def ship_journey_threeWay( destination_distance, light) -> pd.DataFrame:
     df['Distances Without Correction'] = distancesWithoutCorrection
     # master_array.append(distancesWithoutCorrection)
 
-    df['Distances Without Correction 2'] = distancesWithoutCorrection2
+    df['Distances With Drift'] = distancesWithoutCorrection2
     # master_array.append(distancesWithoutCorrection2)
 
     #return our master array so it can be exported in main code file.

@@ -7,7 +7,7 @@ import pandas as pd
 # The goal is to model a spaceship flying through space, and updating
 # values every so often to demonstrate the effect we are looking for.
 # It will take a distance and calculate things based on that entered distance
-def ship_journey( destination_distance, light) -> pd.DataFrame:
+def ship_journey(destination_distance, light) -> pd.DataFrame:
     # creating a spaceship with a speed of 350000 m/s
     myShip = SpaceShip(350000)
     # creating empty master array which will ultimately house all of our data
@@ -22,29 +22,42 @@ def ship_journey( destination_distance, light) -> pd.DataFrame:
     time_to_correct = []
     # array to demonstrate how far our ship will go while waiting for instructions
     distancesWithoutCorrection = []
-    distancesWithoutCorrection2 = []
+    distancesWithDrift = []
     # starting time
     time = 1
     #driftValues here
-    driftTimeValue1 = .000001
+    driftTimeValue1 = .00000000000000001
     # calculating roughly how long our trip SHOULD take
     time_to_destination = destination_distance / myShip.speed
 
     # Loop that will run until we hit the trip time.
     while time < time_to_destination:
+        # Calculates new position and sets the ship position
         ship_pos = myShip.getNewPosition(time)
         myShip.add_dist(ship_pos)
+
+        # Append new ship pos and new time
         ship_positions.append(ship_pos)
         time_values.append(time)
-        
+
+        # (distance / light) * 2
         correctionTime = myShip.getTimeToCorrectOneWay(ship_pos, light)
+
+        # (driftTimeValue1 + 1) * time
         driftTime = calculateDriftTime(correctionTime, driftTimeValue1)
-        drift_time_values1.append(driftTime)
+
+        # Append correctionTime and driftTime
         time_to_correct.append(correctionTime)
+        drift_time_values1.append(driftTime)
+
+        # ship.speed * time
         distanceWithoutCorrection = myShip.getDistanceWhileWaiting(correctionTime)
-        distanceWithoutCorrection2 = myShip.getDistanceWhileWaiting(driftTime)
+        distanceWithDrift = myShip.getDistanceWhileWaiting(driftTime)
+
+        # Append those to distances without correction
         distancesWithoutCorrection.append(distanceWithoutCorrection)
-        distancesWithoutCorrection2.append(distanceWithoutCorrection2)
+        distancesWithDrift.append(distanceWithDrift)
+
         time = time + 86400
 
     #add all of our mini arrays to the one BIG array
@@ -65,7 +78,7 @@ def ship_journey( destination_distance, light) -> pd.DataFrame:
     df['Distances Without Correction'] = distancesWithoutCorrection
     # master_array.append(distancesWithoutCorrection)
 
-    df['Distances Without Correction 2'] = distancesWithoutCorrection2
+    df['Distances With Drift'] = distancesWithDrift
     # master_array.append(distancesWithoutCorrection2)
 
 
