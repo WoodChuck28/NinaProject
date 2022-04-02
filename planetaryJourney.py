@@ -1,12 +1,13 @@
 from distances import *
 from driftTime import *
 from spaceShip import SpaceShip
+from newDriftTime import calculateExponentialDrift
 
 #Current master function responsible for bulk of the work. 
 #The goal is to model a spaceship flying through space, and updating
 #values every so often to demonstrate the effect we are looking for.
 #It will take a distance and calculate things based on that entered distance
-def ship_journey( destination_distance, light):
+def ship_journey( destination_distance, light, timeInterval, driftValue):
     #creating a spaceship with a speed of 350000 m/s
     myShip = SpaceShip(350000)
     #creating empty master array which will ultimately house all of our data
@@ -24,8 +25,9 @@ def ship_journey( destination_distance, light):
     distancesWithoutCorrection2 = []
     #starting time
     time = 1
+    driftTime = 1
     #driftValues here
-    driftTimeValue1 = .000001
+    driftTimeValue1 = driftValue
     #calculating roughly how long our trip SHOULD take
     time_to_destination = destination_distance / myShip.speed
 
@@ -35,22 +37,28 @@ def ship_journey( destination_distance, light):
         myShip.add_dist(ship_pos)
         ship_positions.append(ship_pos)
         time_values.append(time)
+        drift_time_values1.append(driftTime)
         
         correctionTime = myShip.getTimeToCorrectOneWay(ship_pos, light)
-        driftTime = calculateDriftTime(correctionTime, driftTimeValue1)
-        drift_time_values1.append(driftTime)
         time_to_correct.append(correctionTime)
         distanceWithoutCorrection = myShip.getDistanceWhileWaiting(correctionTime)
         distanceWithoutCorrection2 = myShip.getDistanceWhileWaiting(driftTime)
         distancesWithoutCorrection.append(distanceWithoutCorrection)
         distancesWithoutCorrection2.append(distanceWithoutCorrection2)
-        time = time + 86400
+
+        time = time + timeInterval
+        
+        calculatedDrift = calculateExponentialDrift(driftTime, driftValue, timeInterval)
+        driftTime = driftTime + calculatedDrift
+  
+        
+        
 
     #add all of our mini arrays to the one BIG array
     master_array.append(ship_positions)
     master_array.append(time_values)
-    master_array.append(time_to_correct)
     master_array.append(drift_time_values1)
+    master_array.append(time_to_correct)
     master_array.append(distancesWithoutCorrection)
     master_array.append(distancesWithoutCorrection2)
 
