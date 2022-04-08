@@ -4,12 +4,12 @@ from distances import *
 planets = []
 
 # define planets, distances in AU, and their order from earth
-#mars = Planet("Mars", .5, 1)
-#jupiter = Planet("Jupiter", 4.2, 2)
-#saturn = Planet("Saturn", 8.6, 3)
-#uranus = Planet("Uranus", 18.2, 4)
-#neptune = Planet("Neptune", 29.0, 5)
-#pluto = Planet("Pluto", 39.5, 6)
+mars = Planet("Mars", .5, 1)
+jupiter = Planet("Jupiter", 4.2, 2)
+saturn = Planet("Saturn", 8.6, 3)
+uranus = Planet("Uranus", 18.2, 4)
+neptune = Planet("Neptune", 29.0, 5)
+pluto = Planet("Pluto", 39.5, 6)
 kepler16 = Planet("Kepler-16 B", 12700000, 7)
 kepler22 = Planet("Kepler-22 B", 39200000, 8)
 kepler7 = Planet("Kepler-7 B", 63200000, 9)
@@ -29,7 +29,7 @@ planets.append(wasp12)
 planets.append(kepler16)
 planets.append(kepler22)
 planets.append(kepler7)
-#planets.append(kepler452)
+planets.append(kepler452)
 planets.append(gj15ab)
 
 # creating array for plantery distances in meters

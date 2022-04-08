@@ -8,8 +8,10 @@ def runTwoClockModel():
 
     #creating empty planets list
     
-    for i in range(5):
-        master_array = ship_journey_twoWay(planet_distances_m[i], light, 31536000000 ,.0000000000003)
+    for i in range(6):
+        #86400 - one day in secs
+        #31536000 - 10 years in secs
+        master_array = ship_journey_twoWay(planet_distances_m[i], light, 31536000 ,.0000000000003)
         #Think of this as creating a huge matrix of all of the data so it is easy to export
         dataframe = pd.DataFrame(master_array)
 
