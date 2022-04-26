@@ -1,5 +1,5 @@
 def calculateExponentialDrift(currentDriftTime, driftValue, timeInterval):
-    driftValue = timeInterval * (1.0 + driftValue)
+    driftValue = timeInterval + (timeInterval*driftValue)
     #driftTime = currentDriftTime + driftValue
     return driftValue
 

@@ -18,18 +18,18 @@ kepler452 = Planet("Kepler-452 B", 114000000, 11)
 gj15ab = Planet("GJ 15 A b", 733596.5, 12)
 
 
-# adding planets to big list
+# adding planets to big list - Hashtage will skip that planet
 #planets.append(mars)
-#planets.append(jupiter)
 #planets.append(saturn)
+#planets.append(jupiter)
 #planets.append(uranus)
 #planets.append(neptune)
 #planets.append(pluto)
-planets.append(wasp12)
+#planets.append(wasp12)
 planets.append(kepler16)
-planets.append(kepler22)
-planets.append(kepler7)
-planets.append(kepler452)
+#planets.append(kepler22)
+#planets.append(kepler7)
+#planets.append(kepler452)
 planets.append(gj15ab)
 
 # creating array for plantery distances in meters
